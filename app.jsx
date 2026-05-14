@@ -66,6 +66,8 @@ function Nav({ lang, setLang, t }) {
           <a href="#architects">{t.nav.architects}</a>
           <a href="#compare">{t.nav.compare}</a>
           <a href="#glossary">{t.nav.glossary}</a>
+          <a href="#obras">{t.nav.obras}</a>
+          <a href="#quiz">{t.nav.quiz}</a>
         </nav>
         <div className="lang-switch" role="group" aria-label="language">
           <button className={lang === "es" ? "active" : ""} onClick={() => setLang("es")}>ES</button>
@@ -627,6 +629,149 @@ function Glossary({ t }) {
   );
 }
 
+// ------------------ OBRAS ------------------
+function Obras({ t }) {
+  return (
+    <section>
+      <div className="container">
+        <SectionHead num={`${t.obras.num} · ${t.nav.obras}`} title={t.obras.title} tag={t.obras.tag} id="obras" />
+        <div className="obras-grid reveal">
+          {t.obras.list.map((o, i) => (
+            <article className="obra-card" key={i}>
+              <div className="obra-photo">
+                <img src={o.photo} alt={o.name} loading="lazy" />
+                <span className="obra-year">{o.year}</span>
+              </div>
+              <div className="obra-body">
+                <div className="obra-meta">
+                  <span className="obra-tag">{o.tag}</span>
+                  <span className="obra-city">{o.city} · {o.country}</span>
+                </div>
+                <h3>{o.name}</h3>
+                <p className="obra-architect">{o.architect}</p>
+                <p className="obra-desc">{o.desc}</p>
+                <dl className="obra-ficha">
+                  <dt>Estilo · Style</dt><dd>{o.ficha.estilo}</dd>
+                  <dt>Uso · Use</dt><dd>{o.ficha.uso}</dd>
+                  <dt>Estado · Status</dt><dd>{o.ficha.estado}</dd>
+                </dl>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ------------------ QUIZ ------------------
+function Quiz({ t }) {
+  const q = t.quiz.q;
+  const [started, setStarted] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
+
+  function restart() {
+    setStarted(false);
+    setCurrent(0);
+    setSelected(null);
+    setScore(0);
+    setFinished(false);
+  }
+
+  function pick(idx) {
+    if (selected !== null) return;
+    setSelected(idx);
+    if (idx === q[current].answer) setScore(s => s + 1);
+  }
+
+  function next() {
+    if (current + 1 >= q.length) {
+      setFinished(true);
+    } else {
+      setCurrent(c => c + 1);
+      setSelected(null);
+    }
+  }
+
+  const pct = Math.round((score / q.length) * 100);
+  const verdict = pct === 100 ? t.quiz.perfect : pct >= 70 ? t.quiz.great : pct >= 40 ? t.quiz.good : t.quiz.low;
+
+  if (!started) {
+    return (
+      <section>
+        <div className="container">
+          <SectionHead num={`${t.quiz.num} · ${t.nav.quiz}`} title={t.quiz.title} tag={t.quiz.tag} id="quiz" />
+          <div className="quiz-intro reveal">
+            <p>{t.quiz.intro}</p>
+            <button className="quiz-btn-start" onClick={() => setStarted(true)}>{t.quiz.btnStart}</button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (finished) {
+    return (
+      <section>
+        <div className="container">
+          <SectionHead num={`${t.quiz.num} · ${t.nav.quiz}`} title={t.quiz.title} tag={t.quiz.tag} id="quiz" />
+          <div className="quiz-result reveal">
+            <div className="quiz-score-circle">
+              <span className="quiz-score-num">{score}</span>
+              <span className="quiz-score-sep">{t.quiz.of}</span>
+              <span className="quiz-score-total">{q.length}</span>
+            </div>
+            <p className="quiz-verdict">{verdict}</p>
+            <button className="quiz-btn-start" onClick={restart}>{t.quiz.btnRetry}</button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const item = q[current];
+  return (
+    <section>
+      <div className="container">
+        <SectionHead num={`${t.quiz.num} · ${t.nav.quiz}`} title={t.quiz.title} tag={t.quiz.tag} id="quiz" />
+        <div className="quiz-wrap reveal">
+          <div className="quiz-progress">
+            <div className="quiz-bar" style={{ width: `${((current) / q.length) * 100}%` }} />
+            <span>{current + 1} / {q.length}</span>
+          </div>
+          <div className="quiz-stage">
+            <div className="quiz-photo">
+              <img src={item.photo} alt="edificio" />
+            </div>
+            <div className="quiz-panel">
+              <p className="quiz-q">{item.q}</p>
+              <div className="quiz-options">
+                {item.options.map((opt, i) => {
+                  let cls = "quiz-opt";
+                  if (selected !== null) {
+                    if (i === item.answer) cls += " correct";
+                    else if (i === selected) cls += " wrong";
+                    else cls += " dim";
+                  }
+                  return (
+                    <button key={i} className={cls} onClick={() => pick(i)}>{opt}</button>
+                  );
+                })}
+              </div>
+              {selected !== null && (
+                <button className="quiz-btn-next" onClick={next}>{t.quiz.btnNext} →</button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ------------------ FOOTER ------------------
 function Footer({ t, lang }) {
   return (
@@ -747,6 +892,8 @@ function App() {
       <Architects t={t} />
       <Compare t={t} />
       <Glossary t={t} />
+      <Obras t={t} />
+      <Quiz t={t} />
       <Footer t={t} lang={lang} />
       <Tweaks tweaks={tweaks} setTweak={setTweak} t={t} />
     </React.Fragment>

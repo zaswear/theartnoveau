@@ -13,7 +13,9 @@ window.CONTENT = {
       map: "Mapa",
       architects: "Arquitectos",
       compare: "Comparativa",
-      glossary: "Glosario"
+      glossary: "Glosario",
+      obras: "Obras",
+      quiz: "Quiz"
     },
     hero: {
       eyebrow: "Archivo editorial · 1890 — 1914",
@@ -284,6 +286,179 @@ window.CONTENT = {
           subtitle: "Ver Sacrum — A cada época su arte",
           bio: "Discípulo de Wagner y figura clave de la Secession vienesa. Su pabellón coronado por la célebre cúpula vegetal de hojas de laurel doradas (1898) es una declaración construida. Más tarde, en la colonia de artistas de Mathildenhöhe (Darmstadt), demostró que el estilo podía servir también a un proyecto utópico de comunidad.",
           works: ["Secession Building", "Mathildenhöhe", "Hochzeitsturm", "Casa Olbrich"]
+        },
+        {
+          name: "Lluís Domènech i Montaner",
+          years: "1850 — 1923",
+          place: "Barcelona, España",
+          photo: "./img/domenech.jpg",
+          tag: "El rival",
+          subtitle: "Modernisme exuberante frente al ascetismo de Gaudí",
+          bio: "Si Gaudí es el genio solitario del Modernisme, Domènech es su contrapeso racional. Arquitecto, político y teórico, su obra combina la estructura de hierro visto con la cerámica policromada y la vidriera. El Palau de la Música Catalana (1908) es posiblemente el interior más festivo de todo el Art Nouveau: un espacio donde la luz entra coloreada desde todos los ángulos.",
+          works: ["Palau de la Música Catalana", "Hospital de Sant Pau", "Casa Lleó Morera", "Casa Fuster"]
+        },
+        {
+          name: "Louis Sullivan",
+          years: "1856 — 1924",
+          place: "Chicago, EE.UU.",
+          photo: "./img/sullivan.jpg",
+          tag: "El americano",
+          subtitle: "Form follows function — pero con ornamento",
+          bio: "Sullivan es el puente entre el Art Nouveau europeo y la arquitectura americana. Acuñó el principio 'la forma sigue a la función', pero lejos de renunciar al ornamento, desarrolló un vocabulario propio: tallos de acanto geometrizados, rejillas de hierro fundido y frondas de bronce que recubren sus rascacielos de Chicago y San Luis. Maestro de Frank Lloyd Wright.",
+          works: ["Wainwright Building", "Guaranty Building", "Carson Pirie Scott Store", "Auditorium Building"]
+        },
+        {
+          name: "Mikhail Eisenstein",
+          years: "1867 — 1921",
+          place: "Riga, Letonia",
+          photo: "./img/eisenstein.jpg",
+          tag: "El de Riga",
+          subtitle: "El Jugendstil que convirtió Alberta iela en museo",
+          bio: "Eisenstein es el artífice de la cara más exuberante del Art Nouveau en el Báltico. Sus bloques residenciales en la calle Alberta de Riga —construidos entre 1903 y 1908— son un catálogo de máscaras, atlantes, flores y medallones que convierten la fachada en una obra de arte total. Riga alberga hoy el mayor conjunto de Art Nouveau del mundo gracias, en gran parte, a su obra.",
+          works: ["Alberta iela 2a", "Alberta iela 4", "Alberta iela 6", "Strēlnieku iela 4a"]
+        }
+      ]
+    },
+    obras: {
+      num: "IX",
+      title: ["Obras ", "icónicas"],
+      tag: "Fichas de edificios clave del movimiento",
+      list: [
+        {
+          name: "Hôtel Tassel",
+          year: 1893,
+          architect: "Victor Horta",
+          city: "Bruselas",
+          country: "Bélgica",
+          photo: "./img/obras/hotel-tassel.jpg",
+          tag: "El acto fundacional",
+          desc: "El primer edificio plenamente Art Nouveau de la historia. Horta rompe la planta simétrica burguesa y organiza todo el espacio en torno a una escalera bañada de luz natural, con columnas de hierro que se ramifican como tallos y mosaicos que prolongan el motivo vegetal hasta el suelo.",
+          ficha: { estilo: "Art Nouveau belga", uso: "Vivienda privada", estado: "Patrimonio UNESCO · 2000" }
+        },
+        {
+          name: "Casa Batlló",
+          year: 1906,
+          architect: "Antoni Gaudí",
+          city: "Barcelona",
+          country: "España",
+          photo: "./img/obras/casa-batllo.jpg",
+          tag: "El dragón de piedra",
+          desc: "Rehabilitación de un edificio existente convertida en manifiesto. La fachada recubierta de trencadís azul y verde imita las escamas de un dragón; el tejado ondulado es su lomo; los balcones de hierro forjado, sus mandíbulas. El interior despliega un sistema de iluminación natural de precisión casi científica.",
+          ficha: { estilo: "Modernisme catalán", uso: "Viviendas · hoy museo", estado: "Patrimonio UNESCO · 2005" }
+        },
+        {
+          name: "Castel Béranger",
+          year: 1898,
+          architect: "Hector Guimard",
+          city: "París",
+          country: "Francia",
+          photo: "./img/obras/castel-beranger.jpg",
+          tag: "Le style Guimard en estado puro",
+          desc: "El primer gran edificio de Guimard y su tarjeta de presentación. Treinta y seis apartamentos cuya fachada en piedra, ladrillo y hierro fundido combina vanos distorsionados, mascarones y una reja de entrada que es uno de los objetos de diseño más fotografiados del París fin de siècle.",
+          ficha: { estilo: "Art Nouveau francés", uso: "Viviendas", estado: "Monument historique · 1999" }
+        },
+        {
+          name: "Glasgow School of Art",
+          year: 1909,
+          architect: "Charles R. Mackintosh",
+          city: "Glasgow",
+          country: "Escocia",
+          photo: "./img/obras/glasgow-school.jpg",
+          tag: "La cuadrícula que florece",
+          desc: "El edificio más singular de Mackintosh y uno de los más originales del siglo XX. Fachada norte con enormes ventanas de taller industriales, estructura ortogonal austera y, dentro, una biblioteca de madera oscura con galerías voladas que es una de las obras maestras del diseño de interiores.",
+          ficha: { estilo: "Art Nouveau escocés", uso: "Escuela de arte", estado: "En restauración (incendio 2018)" }
+        },
+        {
+          name: "Palau de la Música Catalana",
+          year: 1908,
+          architect: "Lluís Domènech i Montaner",
+          city: "Barcelona",
+          country: "España",
+          photo: "./img/obras/palau-musica.jpg",
+          tag: "La sala de conciertos más festiva del mundo",
+          desc: "Una sala de conciertos donde la luz es el instrumento principal. La cúpula de vidriera inversa ilumina el escenario desde arriba con una explosión de color. Columnas revestidas de cerámica, esculturas de músicos en altorrelieve y una fachada de ladrillo con mosaicos de flores componen el manifiesto más exuberante del Modernisme.",
+          ficha: { estilo: "Modernisme catalán", uso: "Sala de conciertos", estado: "Patrimonio UNESCO · 1997" }
+        },
+        {
+          name: "Secession Building",
+          year: 1898,
+          architect: "Joseph M. Olbrich",
+          city: "Viena",
+          country: "Austria",
+          photo: "./img/obras/secession.jpg",
+          tag: "A cada época su arte",
+          desc: "El manifiesto construido de la Secession vienesa. Cubo blanco rematado por una cúpula de hojas de laurel doradas (apodada 'la col dorada' por los vieneses). El lema grabado sobre la entrada —A cada época su arte, a cada arte su libertad— resume la ambición de toda una generación.",
+          ficha: { estilo: "Sezessionsstil vienés", uso: "Galería de arte", estado: "Monumento nacional" }
+        },
+        {
+          name: "Wainwright Building",
+          year: 1891,
+          architect: "Louis Sullivan",
+          city: "St. Louis",
+          country: "EE.UU.",
+          photo: "./img/obras/wainwright.jpg",
+          tag: "El primer rascacielos moderno",
+          desc: "Sullivan resuelve aquí el problema formal del rascacielos: base comercial, fuste de oficinas y remate de cornisa, como una columna clásica adaptada a la escala vertical. El ornamento de terracota que recubre el friso superior es un bordado de tallos y hojas que equilibra la austeridad de la estructura metálica.",
+          ficha: { estilo: "Art Nouveau americano", uso: "Oficinas", estado: "Landmark nacional · 1970" }
+        }
+      ]
+    },
+    quiz: {
+      num: "X",
+      title: ["Quiz ", "visual"],
+      tag: "¿Reconoces el edificio?",
+      intro: "Siete obras del Art Nouveau. ¿Cuántas reconoces?",
+      btnStart: "Empezar",
+      btnNext: "Siguiente",
+      btnRetry: "Repetir quiz",
+      scoreLabel: "Resultado",
+      of: "de",
+      perfect: "¡Perfecto! Eres un experto del Art Nouveau.",
+      great: "Muy bien. Conoces el movimiento en profundidad.",
+      good: "Nada mal. El Art Nouveau tiene más secretos para ti.",
+      low: "Sigue explorando el archivo. Cada fachada tiene su historia.",
+      q: [
+        {
+          photo: "./img/obras/casa-batllo.jpg",
+          q: "¿Quién diseñó esta fachada de escamas y dragón?",
+          options: ["Antoni Gaudí", "Hector Guimard", "Victor Horta", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/castel-beranger.jpg",
+          q: "¿Qué edificio parisino es este?",
+          options: ["Castel Béranger", "Hôtel Tassel", "Glasgow School of Art", "Secession Building"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/hotel-tassel.jpg",
+          q: "¿En qué año se inauguró el primer edificio Art Nouveau?",
+          options: ["1893", "1900", "1887", "1906"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/glasgow-school.jpg",
+          q: "¿Quién diseñó esta escuela con ventanales industriales?",
+          options: ["Charles R. Mackintosh", "Victor Horta", "Otto Wagner", "Joseph Olbrich"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/palau-musica.jpg",
+          q: "¿En qué ciudad está este palacio de música?",
+          options: ["Barcelona", "Bruselas", "Viena", "París"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/secession.jpg",
+          q: "¿Quién diseñó este pabellón con cúpula de laurel dorado?",
+          options: ["Joseph M. Olbrich", "Otto Wagner", "Louis Sullivan", "Hector Guimard"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/wainwright.jpg",
+          q: "¿Quién diseñó este rascacielos de 1891?",
+          options: ["Louis Sullivan", "Victor Horta", "Antoni Gaudí", "Charles Mackintosh"],
+          answer: 0
         }
       ]
     },
@@ -389,7 +564,9 @@ window.CONTENT = {
       map: "Map",
       architects: "Architects",
       compare: "Compare",
-      glossary: "Glossary"
+      glossary: "Glossary",
+      obras: "Works",
+      quiz: "Quiz"
     },
     hero: {
       eyebrow: "Editorial archive · 1890 — 1914",
@@ -640,6 +817,173 @@ window.CONTENT = {
           subtitle: "Ver Sacrum — To each age its art",
           bio: "Pupil of Wagner and a key figure of the Vienna Secession. His pavilion crowned by the famous vegetal dome of golden laurel leaves (1898) is a built declaration. Later, at the Mathildenhöhe artists’ colony (Darmstadt), he showed the style could also serve a utopian community project.",
           works: ["Secession Building", "Mathildenhöhe", "Hochzeitsturm", "Olbrich House"]
+        },
+        {
+          name: "Lluís Domènech i Montaner", years: "1850 — 1923", place: "Barcelona, Spain",
+          photo: "./img/domenech.jpg",
+          tag: "The rival",
+          subtitle: "Catalan Modernisme in its most ornamental register",
+          bio: "If Gaudí is the solitary genius of Modernisme, Domènech is his rational counterweight. Architect, politician and theorist, his work combines exposed iron structure with polychrome ceramics and stained glass. The Palau de la Música Catalana (1908) is arguably the most festive interior in all of Art Nouveau: a space where coloured light enters from every angle.",
+          works: ["Palau de la Música Catalana", "Hospital de Sant Pau", "Casa Lleó Morera", "Casa Fuster"]
+        },
+        {
+          name: "Louis Sullivan", years: "1856 — 1924", place: "Chicago, USA",
+          photo: "./img/sullivan.jpg",
+          tag: "The American",
+          subtitle: "Form follows function — but with ornament",
+          bio: "Sullivan bridges European Art Nouveau and American architecture. He coined the principle ‘form follows function’, yet far from abandoning ornament, he developed a vocabulary of his own: geometrised acanthus stems, cast-iron grids and bronze fronds that sheathe his Chicago and St Louis skyscrapers. Teacher of Frank Lloyd Wright.",
+          works: ["Wainwright Building", "Guaranty Building", "Carson Pirie Scott Store", "Auditorium Building"]
+        },
+        {
+          name: "Mikhail Eisenstein", years: "1867 — 1921", place: "Riga, Latvia",
+          photo: "./img/eisenstein.jpg",
+          tag: "The Riga master",
+          subtitle: "The Jugendstil that turned Alberta Street into a museum",
+          bio: "Eisenstein is the author of the most exuberant face of Art Nouveau in the Baltic. His residential blocks on Alberta Street in Riga — built between 1903 and 1908 — are a catalogue of masks, atlantes, flowers and medallions that turn the façade into a total work of art. Riga hosts the largest Art Nouveau ensemble in the world, thanks largely to his output.",
+          works: ["Alberta iela 2a", "Alberta iela 4", "Alberta iela 6", "Strēlnieku iela 4a"]
+        }
+      ]
+    },
+    obras: {
+      num: "IX",
+      title: ["Iconic ", "works"],
+      tag: "Building profiles — key works of the movement",
+      list: [
+        {
+          name: "Hôtel Tassel",
+          year: 1893,
+          architect: "Victor Horta",
+          city: "Brussels",
+          country: "Belgium",
+          photo: "./img/obras/hotel-tassel.jpg",
+          tag: "The founding act",
+          desc: "The first fully Art Nouveau building in history. Horta breaks the symmetrical bourgeois plan and organises everything around a sunlit staircase, with iron columns branching like stems and mosaics that extend the vegetal motif all the way to the floor.",
+          ficha: { estilo: "Belgian Art Nouveau", uso: "Private house", estado: "UNESCO World Heritage · 2000" }
+        },
+        {
+          name: "Casa Batlló",
+          year: 1906,
+          architect: "Antoni Gaudí",
+          city: "Barcelona",
+          country: "Spain",
+          photo: "./img/obras/casa-batllo.jpg",
+          tag: "The stone dragon",
+          desc: "A renovation turned manifesto. The façade clad in blue-green trencadís imitates a dragon’s scales; the undulating roof is its spine; the iron balconies are its jaws. Inside, a natural lighting system of almost scientific precision unfolds across the main stairwell.",
+          ficha: { estilo: "Catalan Modernisme", uso: "Apartments · now museum", estado: "UNESCO World Heritage · 2005" }
+        },
+        {
+          name: "Castel Béranger",
+          year: 1898,
+          architect: "Hector Guimard",
+          city: "Paris",
+          country: "France",
+          photo: "./img/obras/castel-beranger.jpg",
+          tag: "Le style Guimard in full",
+          desc: "Guimard’s first major building and his calling card. Thirty-six apartments whose façade in stone, brick and cast iron combines distorted openings, mascarons and an entrance gate that is one of the most photographed design objects in fin-de-siècle Paris.",
+          ficha: { estilo: "French Art Nouveau", uso: "Apartments", estado: "Monument historique · 1999" }
+        },
+        {
+          name: "Glasgow School of Art",
+          year: 1909,
+          architect: "Charles R. Mackintosh",
+          city: "Glasgow",
+          country: "Scotland",
+          photo: "./img/obras/glasgow-school.jpg",
+          tag: "The grid that blossoms",
+          desc: "Mackintosh’s most singular building and one of the most original of the twentieth century. The north façade features enormous industrial workshop windows, austere orthogonal structure and, inside, a dark-wood library with cantilevered galleries that stands as one of the masterpieces of interior design.",
+          ficha: { estilo: "Scottish Art Nouveau", uso: "Art school", estado: "Under restoration (fire 2018)" }
+        },
+        {
+          name: "Palau de la Música Catalana",
+          year: 1908,
+          architect: "Lluís Domènech i Montaner",
+          city: "Barcelona",
+          country: "Spain",
+          photo: "./img/obras/palau-musica.jpg",
+          tag: "The world’s most festive concert hall",
+          desc: "A concert hall where light is the principal instrument. An inverted stained-glass dome floods the stage with colour from above. Ceramic-clad columns, high-relief sculptures of musicians and a brick façade covered in flower mosaics make this the most exuberant manifesto of Modernisme.",
+          ficha: { estilo: "Catalan Modernisme", uso: "Concert hall", estado: "UNESCO World Heritage · 1997" }
+        },
+        {
+          name: "Secession Building",
+          year: 1898,
+          architect: "Joseph M. Olbrich",
+          city: "Vienna",
+          country: "Austria",
+          photo: "./img/obras/secession.jpg",
+          tag: "To each age its art",
+          desc: "The built manifesto of the Vienna Secession. A white cube crowned by a dome of gilded laurel leaves (nicknamed ‘the golden cabbage’ by Viennese locals). The motto carved above the entrance — To each age its art, to art its freedom — sums up the ambition of a whole generation.",
+          ficha: { estilo: "Viennese Sezessionsstil", uso: "Art gallery", estado: "National monument" }
+        },
+        {
+          name: "Wainwright Building",
+          year: 1891,
+          architect: "Louis Sullivan",
+          city: "St. Louis",
+          country: "USA",
+          photo: "./img/obras/wainwright.jpg",
+          tag: "The first modern skyscraper",
+          desc: "Sullivan solves the formal problem of the skyscraper here: commercial base, office shaft and cornice cap — like a classical column adapted to the vertical scale. The terracotta ornament covering the upper frieze is an embroidery of stems and leaves that tempers the austerity of the metal structure.",
+          ficha: { estilo: "American Art Nouveau", uso: "Offices", estado: "National Landmark · 1970" }
+        }
+      ]
+    },
+    quiz: {
+      num: "X",
+      title: ["Visual ", "quiz"],
+      tag: "Do you recognise the building?",
+      intro: "Seven Art Nouveau works. How many can you identify?",
+      btnStart: "Start",
+      btnNext: "Next",
+      btnRetry: "Retry quiz",
+      scoreLabel: "Result",
+      of: "of",
+      perfect: "Perfect! You are an Art Nouveau expert.",
+      great: "Very good. You know the movement in depth.",
+      good: "Not bad. Art Nouveau still has secrets for you.",
+      low: "Keep exploring the archive. Every façade has its story.",
+      q: [
+        {
+          photo: "./img/obras/casa-batllo.jpg",
+          q: "Who designed this scale-and-dragon façade?",
+          options: ["Antoni Gaudí", "Hector Guimard", "Victor Horta", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/castel-beranger.jpg",
+          q: "Which Parisian building is this?",
+          options: ["Castel Béranger", "Hôtel Tassel", "Glasgow School of Art", "Secession Building"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/hotel-tassel.jpg",
+          q: "In what year was the first Art Nouveau building inaugurated?",
+          options: ["1893", "1900", "1887", "1906"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/glasgow-school.jpg",
+          q: "Who designed this school with industrial workshop windows?",
+          options: ["Charles R. Mackintosh", "Victor Horta", "Otto Wagner", "Joseph Olbrich"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/palau-musica.jpg",
+          q: "In which city is this concert hall?",
+          options: ["Barcelona", "Brussels", "Vienna", "Paris"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/secession.jpg",
+          q: "Who designed this pavilion with a golden laurel dome?",
+          options: ["Joseph M. Olbrich", "Otto Wagner", "Louis Sullivan", "Hector Guimard"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/wainwright.jpg",
+          q: "Who designed this 1891 skyscraper?",
+          options: ["Louis Sullivan", "Victor Horta", "Antoni Gaudí", "Charles Mackintosh"],
+          answer: 0
         }
       ]
     },
