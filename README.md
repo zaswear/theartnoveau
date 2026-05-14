@@ -3,152 +3,122 @@
 > Editorial archive · Archivo editorial · 1890 — 1914  
 > The floral rebellion against the straight line.
 
-A bilingual (ES/EN) editorial site about Art Nouveau architecture, with deep historical essay, illustrated timeline, Cloudinary-fed gallery, schematic plans of the movement's formal language, an interactive map of European capitals, key architect biographies, museum-card comparison with adjacent movements, and a glossary of motifs.
+A bilingual (ES/EN) editorial site documenting Art Nouveau architecture. Built as a single-page static app — pure HTML + CSS + React (CDN) — deployable anywhere without a build step.
 
-Built as a static site — pure HTML + CSS + React (via CDN) — so it can be served from GitHub Pages, Netlify, Vercel or any plain static host.
-
----
-
-## Demo
-
-Open `index.html` locally, or deploy and visit your URL.  
-Default language: **Spanish** · toggle in the top-right to switch to English.
+**Live site:** https://zaswear.github.io/theartnoveau
 
 ---
 
-## Estructura · Structure
+## Secciones · Sections
+
+| # | ES | EN | Contenido |
+|---|---|---|---|
+| I | Ensayo | Essay | Ensayo histórico introductorio (~12 min) |
+| II | Cronología | Timeline | 1890–1914, doce hitos clave |
+| III | Galería | Gallery | Fotos desde Cloudinary por tag — muestra 4, expandible |
+| IV | Planos | Plans | 6 láminas SVG: whiplash, tallo, hierro, arcos, fachada, ferronnerie |
+| V | Mapa | Map | Mapa interactivo de 8 ciudades europeas con obras por ciudad |
+| VI | Arquitectos | Architects | 9 retratos con foto, bio y obras |
+| VII | Comparativa | Compare | Cartas tipo museo vs. Art Déco, Modernisme, Beaux-Arts, Neogótico, Bauhaus, Arts & Crafts |
+| VIII | Glosario | Glossary | Whiplash, biomorfo, ferronnerie, Gesamtkunstwerk… |
+| IX | Obras | Works | 7 fichas de edificios icónicos con foto local, descripción y tabla técnica |
+| X | Quiz | Quiz | 7 preguntas aleatorias de un pool de 20, con foto y 4 opciones |
+
+---
+
+## Arquitectos incluidos · Architects covered
+
+Horta · Guimard · Gaudí · Wagner · Mackintosh · Olbrich · Domènech i Montaner · Sullivan · Eisenstein
+
+Retratos descargados de Wikimedia Commons (dominio público) y guardados en `img/`.
+
+---
+
+## Estructura de archivos · File structure
 
 ```
 .
-├── index.html          # Shell (loads fonts, React + Babel, scripts)
-├── styles.css          # All styles
-├── content.js          # Bilingual content (window.CONTENT.es / .en)
-├── app.jsx             # React app — all sections
-├── tweaks-panel.jsx    # Live tweaks panel (palette / type / gallery layout)
+├── index.html              # Shell (carga fuentes, React + Babel, scripts)
+├── styles.css              # Todos los estilos
+├── content.js              # Contenido bilingüe (window.CONTENT.es / .en)
+├── app.jsx                 # App React — todos los componentes
+├── tweaks-panel.jsx        # Panel de tweaks en vivo
+├── img/
+│   ├── *.jpg               # Retratos de arquitectos (Wikimedia Commons)
+│   └── obras/
+│       └── *.jpg           # Fotos de edificios (Wikimedia Commons)
 └── README.md
 ```
 
-### Secciones · Sections
-
-| ES | EN | Notes |
-|---|---|---|
-| Ensayo | Essay | Deep historical essay (~12 min read) |
-| Cronología | Timeline | 1890 – 1914, twelve key milestones |
-| Galería | Gallery | Pulled live from Cloudinary by tag |
-| Planos | Plans | Schematic SVG plates: whiplash, stem, iron, arches, façade, ferronnerie |
-| Mapa | Map | Interactive map of 8 European cities |
-| Arquitectos | Architects | Horta · Guimard · Gaudí · Wagner · Mackintosh · Olbrich |
-| Comparativa | Compare | Museum-card comparison vs. Art Deco, Modernisme, Beaux-Arts, Neo-Gothic, Bauhaus, Arts & Crafts |
-| Glosario | Glossary | Whiplash, biomorphic, ferronnerie, Gesamtkunstwerk… |
-
 ---
 
-## Galería desde Cloudinary · Cloudinary gallery
+## Galería desde Cloudinary
 
-The gallery is populated at runtime by calling Cloudinary's public **resource list** endpoint:
+La galería se puebla en tiempo de ejecución llamando al endpoint público de Cloudinary:
 
 ```
 https://res.cloudinary.com/dkn49zkfr/image/list/arquitecturanoveau.json
 ```
 
-For this to work you need **two** things:
+**Requisitos:**
 
-### 1. Tag every image with `arquitecturanoveau`
+1. Etiqueta cada imagen con `arquitecturanoveau` en la Media Library de Cloudinary.
+2. En **Settings → Security**, asegúrate de que **Resource list** está en **Allowed**.
 
-In the Cloudinary console, open each image and add the tag `arquitecturanoveau`. You can bulk-tag from the Media Library.
-
-### 2. Enable the public list API for that tag
-
-The Cloudinary public list endpoint is **disabled by default** for security. To turn it on:
-
-1. Log in at <https://cloudinary.com/console>
-2. Go to **Settings → Security**
-3. Under **Restricted media types**, ensure **Resource list** is set to **Allowed** (or remove it from the restricted list).
-4. Reload the site — the gallery should populate automatically.
-
-If you'd rather keep that endpoint disabled, you can hard-code a list of public IDs inside `app.jsx` (replace the `fetch(...)` block in the `Gallery` component with a static array).
-
-### Cambiar de cuenta · Switching Cloudinary account
-
-In `app.jsx` (top of file):
+Para cambiar de cuenta, edita estas dos constantes al inicio de `app.jsx`:
 
 ```js
 const CLOUD_NAME = "dkn49zkfr";
 const CLOUD_TAG  = "arquitecturanoveau";
 ```
 
-Change those two constants to point at your own cloud and tag.
+---
+
+## Tweaks (en vivo)
+
+El panel flotante **Tweaks** permite cambiar sin recargar:
+
+| Opción | Valores |
+|---|---|
+| Idioma | ES / EN |
+| Paleta | Default (burdeos) · Moss · Ink · Rose |
+| Tipografía | Cormorant + Lora · DM Serif + Spectral · EB Garamond |
+| Layout galería | Cuadrícula · Mosaico · Cinta |
 
 ---
 
-## Tweaks (live)
+## Desarrollo local
 
-A floating **Tweaks** panel (toggle from the host toolbar) lets you switch:
-
-- **Idioma · Language** — ES / EN (also persisted in the URL-less state)
-- **Paleta** — Default oxblood, Moss, Ink, Rose
-- **Tipografía** — Cormorant + Lora · DM Serif + Spectral · EB Garamond
-- **Layout de galería** — Cuadrícula / Mosaico / Cinta
-
----
-
-## Subir a GitHub · Deploy on GitHub
+Sin build step. Solo necesitas servir los archivos estáticos (el `fetch()` de la galería no funciona desde `file://`):
 
 ```bash
-# 1. Crea el repo en github.com/<tu-usuario>/theartnoveau (vacío)
-
-# 2. Desde esta carpeta:
-git init
-git add .
-git commit -m "feat: initial commit — The Art Noveau editorial archive"
-git branch -M main
-git remote add origin https://github.com/<tu-usuario>/theartnoveau.git
-git push -u origin main
-```
-
-### GitHub Pages
-
-1. En el repo, ve a **Settings → Pages**
-2. Source: **Deploy from a branch**, branch **main**, folder **/(root)**
-3. Guarda. En 1–2 minutos tendrás tu sitio en `https://<tu-usuario>.github.io/theartnoveau/`
-
-### Alternativas
-
-- **Netlify** — arrastra la carpeta en <https://app.netlify.com/drop>
-- **Vercel** — `vercel` desde la terminal
-- **Cloudflare Pages** — conecta el repo
-
----
-
-## Desarrollo local · Local development
-
-No build step. Solo necesitas servir la carpeta como estáticos (porque `fetch()` no funciona desde `file://`):
-
-```bash
-# Python
 python3 -m http.server 8080
-
-# Node
+# o
 npx serve .
-
-# Luego abre http://localhost:8080
+# → http://localhost:8080
 ```
 
 ---
 
-## Créditos · Credits
+## Deploy en GitHub Pages
 
-- **Texto · Text** — escrito para este archivo · written for this archive
-- **Tipografías · Type** — [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond), [Lora](https://fonts.google.com/specimen/Lora), [Italianno](https://fonts.google.com/specimen/Italianno), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (Google Fonts)
-- **Imágenes · Images** — cuenta personal de Cloudinary, tag `arquitecturanoveau`
+1. Ve a **Settings → Pages** del repositorio
+2. Source: **Deploy from a branch** · branch **main** · folder **/ (root)**
+3. Añade un archivo `.nojekyll` vacío en la raíz (ya incluido en este repo)
+4. En 1–2 minutos el sitio estará en `https://<usuario>.github.io/theartnoveau`
+
+---
+
+## Imágenes · Image credits
+
+- **Galería** — fotos propias alojadas en Cloudinary, tag `arquitecturanoveau`
+- **Retratos de arquitectos** — Wikimedia Commons, dominio público
+- **Fotos de edificios** (`img/obras/`) — Wikimedia Commons, dominio público
 
 ---
 
 ## Licencia · License
 
-MIT © 2026 — texto, código y diseño editorial.  
-Las imágenes alojadas en Cloudinary se rigen por su propio régimen de derechos.
-
-```
-MIT License — do as you wish, mention the source, no warranty.
-```
+MIT © 2026  
+El código y los textos son de libre uso con atribución.  
+Las imágenes de Wikimedia Commons se rigen por sus licencias originales (dominio público).
