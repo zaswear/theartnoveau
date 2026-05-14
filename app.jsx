@@ -665,30 +665,36 @@ function Obras({ t }) {
 }
 
 // ------------------ QUIZ ------------------
+const QUIZ_SIZE = 7;
+function shufflePick(arr, n) {
+  return [...arr].sort(() => Math.random() - 0.5).slice(0, n);
+}
+
 function Quiz({ t }) {
-  const q = t.quiz.q;
   const [started, setStarted] = useState(false);
+  const [activeQ, setActiveQ] = useState([]);
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
-  function restart() {
-    setStarted(false);
+  function startQuiz() {
+    setActiveQ(shufflePick(t.quiz.q, QUIZ_SIZE));
     setCurrent(0);
     setSelected(null);
     setScore(0);
     setFinished(false);
+    setStarted(true);
   }
 
   function pick(idx) {
     if (selected !== null) return;
     setSelected(idx);
-    if (idx === q[current].answer) setScore(s => s + 1);
+    if (idx === activeQ[current].answer) setScore(s => s + 1);
   }
 
   function next() {
-    if (current + 1 >= q.length) {
+    if (current + 1 >= activeQ.length) {
       setFinished(true);
     } else {
       setCurrent(c => c + 1);
@@ -696,7 +702,8 @@ function Quiz({ t }) {
     }
   }
 
-  const pct = Math.round((score / q.length) * 100);
+  const q = activeQ;
+  const pct = q.length ? Math.round((score / q.length) * 100) : 0;
   const verdict = pct === 100 ? t.quiz.perfect : pct >= 70 ? t.quiz.great : pct >= 40 ? t.quiz.good : t.quiz.low;
 
   if (!started) {
@@ -706,7 +713,7 @@ function Quiz({ t }) {
           <SectionHead num={`${t.quiz.num} · ${t.nav.quiz}`} title={t.quiz.title} tag={t.quiz.tag} id="quiz" />
           <div className="quiz-intro reveal">
             <p>{t.quiz.intro}</p>
-            <button className="quiz-btn-start" onClick={() => setStarted(true)}>{t.quiz.btnStart}</button>
+            <button className="quiz-btn-start" onClick={startQuiz}>{t.quiz.btnStart}</button>
           </div>
         </div>
       </section>
@@ -725,7 +732,7 @@ function Quiz({ t }) {
               <span className="quiz-score-total">{q.length}</span>
             </div>
             <p className="quiz-verdict">{verdict}</p>
-            <button className="quiz-btn-start" onClick={restart}>{t.quiz.btnRetry}</button>
+            <button className="quiz-btn-start" onClick={startQuiz}>{t.quiz.btnRetry}</button>
           </div>
         </div>
       </section>

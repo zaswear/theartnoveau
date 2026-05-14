@@ -459,6 +459,78 @@ window.CONTENT = {
           q: "¿Quién diseñó este rascacielos de 1891?",
           options: ["Louis Sullivan", "Victor Horta", "Antoni Gaudí", "Charles Mackintosh"],
           answer: 0
+        },
+        {
+          photo: "./img/obras/casa-batllo.jpg",
+          q: "¿En qué ciudad está la Casa Batlló?",
+          options: ["Barcelona", "Madrid", "París", "Viena"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/hotel-tassel.jpg",
+          q: "¿Quién diseñó el Hôtel Tassel, primer edificio Art Nouveau?",
+          options: ["Victor Horta", "Hector Guimard", "Otto Wagner", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/glasgow-school.jpg",
+          q: "¿En qué ciudad escocesa está esta escuela de arte?",
+          options: ["Glasgow", "Edimburgo", "Dublín", "Manchester"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/castel-beranger.jpg",
+          q: "¿En qué año se terminó el Castel Béranger?",
+          options: ["1898", "1893", "1905", "1910"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/wainwright.jpg",
+          q: "¿En qué ciudad estadounidense está el Wainwright Building?",
+          options: ["St. Louis", "Chicago", "Nueva York", "Detroit"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/secession.jpg",
+          q: "¿En qué ciudad está el Secession Building?",
+          options: ["Viena", "Berlín", "Praga", "Budapest"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/palau-musica.jpg",
+          q: "¿Quién diseñó el Palau de la Música Catalana?",
+          options: ["Lluís Domènech i Montaner", "Antoni Gaudí", "Puig i Cadafalch", "Louis Sullivan"],
+          answer: 0
+        },
+        {
+          photo: "./img/horta.jpg",
+          q: "¿Quién es este arquitecto belga, padre del Art Nouveau?",
+          options: ["Victor Horta", "Otto Wagner", "Hector Guimard", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/gaudi.jpg",
+          q: "¿Quién es este arquitecto, autor de la Sagrada Familia?",
+          options: ["Antoni Gaudí", "Lluís Domènech i Montaner", "Hector Guimard", "Joseph Olbrich"],
+          answer: 0
+        },
+        {
+          photo: "./img/mackintosh.jpg",
+          q: "¿Quién es este arquitecto escocés, maestro de la línea recta?",
+          options: ["Charles R. Mackintosh", "Louis Sullivan", "Victor Horta", "Otto Wagner"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/hotel-tassel.jpg",
+          q: "¿Qué patrimonio UNESCO protege este edificio de Bruselas?",
+          options: ["Principales mansiones de Horta", "Casco histórico de Bruselas", "Edificios Horta · Grupo Bélgica", "Monumentos del Art Nouveau belga"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/palau-musica.jpg",
+          q: "¿En qué año se inauguró el Palau de la Música Catalana?",
+          options: ["1908", "1900", "1912", "1897"],
+          answer: 0
         }
       ]
     },
@@ -983,6 +1055,78 @@ window.CONTENT = {
           photo: "./img/obras/wainwright.jpg",
           q: "Who designed this 1891 skyscraper?",
           options: ["Louis Sullivan", "Victor Horta", "Antoni Gaudí", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/casa-batllo.jpg",
+          q: "In which city is Casa Batlló located?",
+          options: ["Barcelona", "Madrid", "Paris", "Vienna"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/hotel-tassel.jpg",
+          q: "Who designed the Hôtel Tassel, the first Art Nouveau building?",
+          options: ["Victor Horta", "Hector Guimard", "Otto Wagner", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/glasgow-school.jpg",
+          q: "In which Scottish city is this school of art?",
+          options: ["Glasgow", "Edinburgh", "Dublin", "Manchester"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/castel-beranger.jpg",
+          q: "In what year was Castel Béranger completed?",
+          options: ["1898", "1893", "1905", "1910"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/wainwright.jpg",
+          q: "In which American city is the Wainwright Building?",
+          options: ["St. Louis", "Chicago", "New York", "Detroit"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/secession.jpg",
+          q: "In which city is the Secession Building?",
+          options: ["Vienna", "Berlin", "Prague", "Budapest"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/palau-musica.jpg",
+          q: "Who designed the Palau de la Música Catalana?",
+          options: ["Lluís Domènech i Montaner", "Antoni Gaudí", "Puig i Cadafalch", "Louis Sullivan"],
+          answer: 0
+        },
+        {
+          photo: "./img/horta.jpg",
+          q: "Who is this Belgian architect, father of Art Nouveau?",
+          options: ["Victor Horta", "Otto Wagner", "Hector Guimard", "Charles Mackintosh"],
+          answer: 0
+        },
+        {
+          photo: "./img/gaudi.jpg",
+          q: "Who is this architect, author of the Sagrada Família?",
+          options: ["Antoni Gaudí", "Lluís Domènech i Montaner", "Hector Guimard", "Joseph Olbrich"],
+          answer: 0
+        },
+        {
+          photo: "./img/mackintosh.jpg",
+          q: "Who is this Scottish architect, master of the straight line?",
+          options: ["Charles R. Mackintosh", "Louis Sullivan", "Victor Horta", "Otto Wagner"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/hotel-tassel.jpg",
+          q: "Which UNESCO designation protects this Brussels building?",
+          options: ["Major Town Houses of Horta", "Historic Centre of Brussels", "Horta Buildings · Belgium Group", "Art Nouveau Monuments Belgium"],
+          answer: 0
+        },
+        {
+          photo: "./img/obras/palau-musica.jpg",
+          q: "In what year was the Palau de la Música Catalana inaugurated?",
+          options: ["1908", "1900", "1912", "1897"],
           answer: 0
         }
       ]
