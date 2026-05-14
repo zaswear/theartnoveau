@@ -682,6 +682,28 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   text-transform: uppercase;
 }
 
+.gallery-more {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+.gallery-more button {
+  background: none;
+  border: 1px solid var(--ink);
+  padding: 12px 36px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background .2s ease, color .2s ease;
+}
+.gallery-more button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .gallery-empty {
   border: 1px dashed var(--rule);
   background: var(--paper);

@@ -209,8 +209,11 @@ function buildCloudinaryUrl(publicId, w = 800) {
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_fill,w_${w},q_auto,f_auto/${publicId}`;
 }
 
+const GALLERY_INITIAL = 4;
+
 function Gallery({ t, layout }) {
   const [state, setState] = useState({ status: "loading", items: [] });
+  const [expanded, setExpanded] = useState(false);
   const [lb, setLb] = useState(null);
 
   useEffect(() => {
@@ -275,25 +278,37 @@ function Gallery({ t, layout }) {
           </div>
         )}
 
-        {state.status === "ok" && (
-          <div className="gallery-grid" data-layout={layout}>
-            {state.items.map((it) => {
-              const url = buildCloudinaryUrl(it.id, 900);
-              const big = buildCloudinaryUrl(it.id, 1800);
-              const caption = it.context?.custom?.caption || it.context?.caption || prettyName(it.id);
-              const alt = it.context?.custom?.alt || caption;
-              return (
-                <div className="tile" key={it.id} onClick={() => setLb({ url: big, caption })}>
-                  <img src={url} alt={alt} loading="lazy" />
-                  <div className="caption">
-                    {caption}
-                    <small>{CLOUD_TAG}</small>
-                  </div>
+        {state.status === "ok" && (() => {
+          const visible = expanded ? state.items : state.items.slice(0, GALLERY_INITIAL);
+          return (
+            <>
+              <div className="gallery-grid" data-layout={layout}>
+                {visible.map((it) => {
+                  const url = buildCloudinaryUrl(it.id, 900);
+                  const big = buildCloudinaryUrl(it.id, 1800);
+                  const caption = it.context?.custom?.caption || it.context?.caption || prettyName(it.id);
+                  const alt = it.context?.custom?.alt || caption;
+                  return (
+                    <div className="tile" key={it.id} onClick={() => setLb({ url: big, caption })}>
+                      <img src={url} alt={alt} loading="lazy" />
+                      <div className="caption">
+                        {caption}
+                        <small>{CLOUD_TAG}</small>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {state.items.length > GALLERY_INITIAL && (
+                <div className="gallery-more">
+                  <button onClick={() => setExpanded(e => !e)}>
+                    {expanded ? t.gallery.showLess : `${t.gallery.showMore} (${state.items.length})`}
+                  </button>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              )}
+            </>
+          );
+        })()}
       </div>
 
       {lb && (

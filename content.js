@@ -91,7 +91,9 @@ window.CONTENT = {
       emptyText: "No se encontraron imágenes con la etiqueta",
       emptyHint: "Asegúrate de tener activada la opción Resource List > Allow en la consola de Cloudinary (Settings → Security) para el cloud dkn49zkfr, y de que las imágenes tengan la etiqueta indicada.",
       placeholderCount: 12,
-      captionFallback: "Obra sin titular"
+      captionFallback: "Obra sin titular",
+      showMore: "Ver todas las fotos",
+      showLess: "Ver menos"
     },
     plans: {
       num: "IV",
@@ -714,7 +716,9 @@ window.CONTENT = {
       emptyText: "No images were found with the tag",
       emptyHint: "Make sure Resource List > Allow is enabled in the Cloudinary console (Settings → Security) for cloud dkn49zkfr, and that your images carry the tag above.",
       placeholderCount: 12,
-      captionFallback: "Untitled work"
+      captionFallback: "Untitled work",
+      showMore: "View all photos",
+      showLess: "Show less"
     },
     plans: {
       num: "IV",
