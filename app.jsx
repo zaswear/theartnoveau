@@ -215,6 +215,8 @@ function Gallery({ t, layout }) {
   const [state, setState] = useState({ status: "loading", items: [] });
   const [expanded, setExpanded] = useState(false);
   const [lb, setLb] = useState(null);
+  const [present, setPresent] = useState(null); // índice de la diapositiva o null
+  const presentRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -245,6 +247,41 @@ function Gallery({ t, layout }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [lb]);
 
+  // ── Modo presentación: slideshow a pantalla completa con transiciones ──
+  const total = state.items.length;
+  const openPresentation = () => {
+    if (!total) return;
+    setPresent(0);
+    const el = presentRef.current;
+    if (el && el.requestFullscreen) el.requestFullscreen().catch(() => {});
+  };
+  const closePresentation = () => {
+    setPresent(null);
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  };
+  const stepPresent = (dir) => setPresent((i) => (i === null ? i : (i + dir + total) % total));
+
+  useEffect(() => {
+    if (present === null) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const onKey = (e) => {
+      if (e.key === "Escape") closePresentation();
+      else if (e.key === "ArrowRight") stepPresent(1);
+      else if (e.key === "ArrowLeft") stepPresent(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    // Salir si el usuario abandona pantalla completa (Esc del navegador)
+    const onFs = () => { if (!document.fullscreenElement) setPresent(null); };
+    document.addEventListener("fullscreenchange", onFs);
+    // Autoavance (se desactiva con reduce-motion)
+    const timer = reduced ? null : setInterval(() => stepPresent(1), 5000);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("fullscreenchange", onFs);
+      if (timer) clearInterval(timer);
+    };
+  }, [present, total]);
+
   return (
     <section>
       <div className="container">
@@ -256,6 +293,11 @@ function Gallery({ t, layout }) {
             {t.gallery.toolbarLabel}
           </div>
           <div>tag · <span style={{ color: "var(--accent)" }}>{CLOUD_TAG}</span> · {t.gallery.sourceLabel}</div>
+          {state.status === "ok" && state.items.length > 0 && (
+            <button className="present-launch" onClick={openPresentation} aria-label="Modo presentación a pantalla completa">
+              ⛶ Presentación
+            </button>
+          )}
         </div>
 
         {state.status === "loading" && (
@@ -318,6 +360,43 @@ function Gallery({ t, layout }) {
           <div className="lb-cap">{lb.caption}</div>
         </div>
       )}
+
+      {/* ── Modo presentación (slideshow a pantalla completa) ── */}
+      <div className="present-stage" ref={presentRef} data-open={present !== null}>
+        {present !== null && total > 0 && (() => {
+          const it = state.items[present];
+          const url = buildCloudinaryUrl(it.id, 1800);
+          const caption = it.context?.custom?.caption || it.context?.caption || prettyName(it.id);
+          return (
+            <>
+              <img key={it.id} className="present-img" src={url} alt={caption} />
+              <div className="present-cap">{caption}</div>
+              <div className="present-counter">{String(present + 1).padStart(2, "0")} · {String(total).padStart(2, "0")}</div>
+              <button className="present-close" onClick={closePresentation} aria-label="Cerrar (Esc)">Esc · cerrar</button>
+              <button className="present-nav present-prev" onClick={() => stepPresent(-1)} aria-label="Anterior">‹</button>
+              <button className="present-nav present-next" onClick={() => stepPresent(1)} aria-label="Siguiente">›</button>
+            </>
+          );
+        })()}
+      </div>
+      <style>{`
+        .present-launch { margin-left: 12px; padding: 6px 14px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 999px; cursor: pointer; font: inherit; font-size: 13px; letter-spacing: .03em; transition: background .2s, color .2s; }
+        .present-launch:hover { background: var(--accent); color: #fff; }
+        .present-stage { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; background: #0b0705; }
+        .present-stage[data-open="true"] { display: flex; }
+        .present-stage:fullscreen { background: #0b0705; }
+        .present-img { max-width: 92vw; max-height: 86vh; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,.6); animation: presentFade .8s ease; }
+        @keyframes presentFade { from { opacity: 0; transform: scale(1.015); } to { opacity: 1; transform: scale(1); } }
+        .present-cap { position: absolute; bottom: 6vh; left: 0; right: 0; text-align: center; color: #f4ece1; font-size: clamp(15px, 2.2vw, 22px); letter-spacing: .02em; padding: 0 6vw; }
+        .present-counter { position: absolute; top: 5vh; left: 6vw; color: #cbb79f; font-size: 13px; letter-spacing: .18em; }
+        .present-close { position: absolute; top: 4vh; right: 5vw; background: rgba(255,255,255,.12); color: #f4ece1; border: none; padding: 8px 14px; border-radius: 999px; cursor: pointer; font: inherit; font-size: 13px; }
+        .present-close:hover { background: rgba(255,255,255,.22); }
+        .present-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.08); color: #f4ece1; border: none; width: 54px; height: 54px; border-radius: 50%; cursor: pointer; font-size: 30px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+        .present-nav:hover { background: rgba(255,255,255,.2); }
+        .present-prev { left: 3vw; }
+        .present-next { right: 3vw; }
+        @media (prefers-reduced-motion: reduce) { .present-img { animation: none; } }
+      `}</style>
     </section>
   );
 }
