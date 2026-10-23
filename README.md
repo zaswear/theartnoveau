@@ -38,11 +38,13 @@ Retratos descargados de Wikimedia Commons (dominio público) y guardados en `img
 
 ```
 .
-├── index.html              # Shell (carga fuentes, React + Babel, scripts)
+├── index.html              # Shell (fuentes, React de producción, build/*.js)
 ├── styles.css              # Todos los estilos
 ├── content.js              # Contenido bilingüe (window.CONTENT.es / .en)
 ├── app.jsx                 # App React — todos los componentes
 ├── tweaks-panel.jsx        # Panel de tweaks en vivo
+├── build/                  # JSX precompilado: lo genera ./build.sh, se commitea
+├── build.sh                # Recompila app.jsx y tweaks-panel.jsx (esbuild vía npx)
 ├── img/
 │   ├── *.jpg               # Retratos de arquitectos (Wikimedia Commons)
 │   └── obras/
