@@ -10,7 +10,9 @@
   --paper: #faf3e3;
   --ink: #1c160f;
   --ink-soft: #4a3f30;
-  --ink-faint: #8b7a5e;
+  /* Era #8b7a5e: 3,5:1 sobre el fondo crema en textos de 10 px. Este pasa
+     de 4,5:1 (AA) sobre --bg, --bg-soft y --paper. */
+  --ink-faint: #6a5b42;
   --rule: #c9b88f;
   --rule-soft: #e1d4ad;
   --accent: #6b2737;       /* oxblood */
@@ -449,6 +451,13 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   position: relative;
   min-height: 540px;
 }
+/* En móvil los 25 años no caben en 335 px: las etiquetas se pisaban y la
+   última empujaba la página entera hacia un lado. La línea conserva su ancho
+   y se desplaza dentro de su propio marco. */
+@media (max-width: 720px) {
+  .timeline { overflow-x: auto; padding-inline: 56px; }
+  .timeline-track { min-width: 760px; }
+}
 .timeline-axis {
   position: absolute;
   left: 0; right: 0;
@@ -531,7 +540,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   display: block;
   font-family: var(--font-mono);
   font-style: normal;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .18em;
   color: var(--accent);
   text-transform: uppercase;
@@ -540,7 +549,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .tl-marker .label .sub {
   font-family: var(--font-mono);
   font-style: normal;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .12em;
   color: var(--ink-faint);
   text-transform: uppercase;
@@ -862,6 +871,10 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   position: absolute;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  /* El punto mide 14 px; el relleno lleva el área táctil a 44×44. */
+  padding: 15px;
+  background: none;
+  border: 0;
 }
 .map-pin .ring {
   width: 14px; height: 14px;
@@ -875,7 +888,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .map-pin.active .ring { transform: scale(1.4); background: var(--gold); }
 .map-pin .pin-label {
   position: absolute;
-  top: -22px;
+  top: -7px;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
@@ -1000,7 +1013,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   inset: auto 0 12px 0;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -1081,7 +1094,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   justify-content: space-between;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -1113,7 +1126,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   grid-template-columns: auto 1fr;
   gap: 4px 14px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .14em;
 }
 .obra-ficha dt {
@@ -1175,7 +1188,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   right: 0;
   top: 8px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .2em;
   color: var(--ink-faint);
 }
@@ -1373,7 +1386,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   flex-wrap: wrap;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .18em;
   text-transform: uppercase;
 }
